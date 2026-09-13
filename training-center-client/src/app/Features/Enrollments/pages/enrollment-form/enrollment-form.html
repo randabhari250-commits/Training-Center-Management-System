@@ -1,0 +1,35 @@
+
+<h1> Create Enrollment </h1>
+
+<form [formGroup]="enrollmentForm" (ngSubmit)="submitEnroll()">
+<div>
+  <label> Student </label>
+  <select formControlName="StudentId">
+    <option [ngValue]="null">Select Student </option>
+    @for(student of studentList ; track student.Id){
+      <option [ngValue]="student.Id"> {{student.Name}}</option>
+    }
+  </select>
+</div>
+
+  <div>
+  <label> Course </label>
+  <select formControlName="CourseId">
+    <option [ngValue]="null"> Select Course </option>
+    @for(course of courseList ; track course.id){
+      <option [ngValue]="course.id"> {{course.Title}}</option>
+    }
+  </select>
+</div>
+
+@if(enrollmentForm.invalid){
+  <p> Please select a student and a course </p>
+}
+@if (errorMessage ==='duplicate') {
+  <p>The Student is already enrolled in this course</p>
+}
+@if (errorMessage === 'full') {
+  <p> This course is full</p>
+}
+<button type="submit">Enroll Student</button>
+</form>

@@ -1,0 +1,36 @@
+<h1> Course List</h1>
+
+<button (click)="addCorse()"> Add Course </button>
+
+@if(errorMessage()){
+  <p><strong>{{errorMessage()}} </strong> </p>
+}
+
+<table>
+  <thead>
+    <th>Id</th>|
+    <th>Title</th>|
+    <th>Capacity</th>|
+    <th>Start Date</th>|
+    <th>End Date</th>|
+    <th>Instructor Id</th>|
+  </thead>
+  <tbody>
+    @for(course of Course(); track course.id){
+    <tr>
+      <td>{{course.id}}</td>|
+      <td>{{course.Title}}</td>|
+      <td>{{course.Capacity}}</td>|
+      <td>{{course.StartDate}}</td>|
+      <td>{{course.EndDate}}</td>|
+      <td> {{course.InstructorId ?? '| Not Assigned'}}</td>
+
+      <td>
+        <button (click)="viewCourse(course.id)"> View Course</button>
+          <button (click)="editCourse(course.id)"> Edit Course</button>
+            <button (click)="deleteCourse(course.id)"> Delete Course</button>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

@@ -1,0 +1,58 @@
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.details-card {
+  width: 500px;
+  max-width: 90%;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.details-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.details-card p {
+  margin: 12px 0;
+  color: #444;
+}
+
+.details-card strong {
+  color: #333;
+}
+
+.courses-card {
+  width: 500px;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.courses-card h2 {
+  color: #333;
+}
+
+.courses-card li {
+  margin-bottom: 8px;
+}
+
+button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #57688e;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

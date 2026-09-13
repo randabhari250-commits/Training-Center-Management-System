@@ -1,0 +1,82 @@
+@if(studentId === null){
+  <h1>Add Student</h1>
+}
+@else {
+  <h1>Edit Student</h1>
+}
+
+<form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name">
+
+    @if (studentForm.controls['name'].touched && studentForm.controls['name'].hasError('required')) {
+      <p>Name is required.</p>
+    }
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    @if (studentForm.controls['email'].touched && studentForm.controls['email'].hasError('required')) {
+      <p>Email is required.</p>
+    }
+
+    @if (studentForm.controls['email'].touched && studentForm.controls['email'].hasError('email')) {
+      <p>Please enter a valid email.</p>
+    }
+  </div>
+
+  <div>
+    <label>Age</label>
+    <input type="number" formControlName="age">
+
+    @if (studentForm.controls['age'].touched && studentForm.controls['age'].hasError('required')) {
+      <p>Age is required.</p>
+    }
+
+    @if (studentForm.controls['age'].touched && studentForm.controls['age'].hasError('min')) {
+      <p>Age must be at least 16.</p>
+    }
+
+    @if (studentForm.controls['age'].touched && studentForm.controls['age'].hasError('max')) {
+      <p>Age must not be greater than 100.</p>
+    }
+  </div>
+
+  <div>
+    <label>Major</label>
+    <input type="text" formControlName="major">
+
+    @if (studentForm.controls['major'].touched && studentForm.controls['major'].hasError('required')) {
+      <p>Major is required.</p>
+    }
+  </div>
+
+  <div>
+    <label>Phone</label>
+    <input type="text" formControlName="phone">
+
+    @if (studentForm.controls['phone'].touched && studentForm.controls['phone'].hasError('required')) {
+      <p>Phone is required.</p>
+    }
+  </div>
+
+  @if(SuccessMessage()){
+    <p>{{ SuccessMessage() }}</p>
+  }
+
+  @if(errorMessage()){
+    <p>{{ errorMessage()}}</p>
+  }
+
+  @if(studentId === null){
+    <button type="submit">Save Student</button>
+  }
+  @else {
+    <button type="submit">Update Student</button>
+  }
+
+</form>

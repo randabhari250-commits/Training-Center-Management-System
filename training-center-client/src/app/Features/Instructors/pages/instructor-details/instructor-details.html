@@ -1,0 +1,13 @@
+<h1> Instructor Details </h1>
+@if(instructor(); as currentInstructor){
+  <div class="details-card">
+    <h2>{{currentInstructor.Name}}</h2>
+    <p> <strong> Id: </strong> {{currentInstructor.id}}</p>
+    <p> <strong> Email: </strong> {{currentInstructor.Email}}</p>
+    <p> <strong> Specialization: </strong> {{currentInstructor.Specialization}}</p>
+  </div>
+}
+@else {
+  <p> Instructor not found</p>
+}
+

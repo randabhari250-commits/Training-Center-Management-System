@@ -1,0 +1,27 @@
+<h1> Student Details </h1>
+
+@if(student(); as currentStudent){
+  <div class="details-card">
+    <h2>{{currentStudent.Name}}</h2>
+    <p> <strong> Email: </strong> {{currentStudent.Email}}</p>
+    <p> <strong> Age: </strong> {{currentStudent.Age}}</p>
+    <p> <strong> Major: </strong> {{currentStudent.Major}}</p>
+    <p> <strong> Phone: </strong> {{currentStudent.Phone}}</p>
+  </div>
+  <div class="courses-card">
+    <h2> Courses</h2>
+    @if(courses().length>0){
+      <ul>
+        @for (course of courses(); track course) {
+            <li>{{course}}</li>
+        }
+      </ul>}
+
+    @else {
+        <p>This Student is not enrolled any course.</p>
+      }
+  </div>
+}
+@else {
+  <p> Student not found</p>
+}

@@ -1,0 +1,23 @@
+<h1> Student List</h1>
+
+<button (click)="addStudent()">  Add Student </button>
+<div>
+<input type="text" placeholder="Search By Name" [(ngModel)]="searchName">
+<input type="text" placeholder="Filter By Major" [(ngModel)]="selectedMajor">
+<button (click)="loadStudents()">Search</button>
+</div>
+
+@if(errorMessage()){
+   <p><strong>{{errorMessage()}} </strong> </p>
+}
+
+<br>
+<div class="students_container">
+  @for(student of Students(); track student.Id){
+      <app-student-card [student]="student"></app-student-card>
+
+      <button (click)="viewStudent(student.Id)"> View</button>
+      <button (click)="editStudent(student.Id)"> Edit </button>
+      <button (click)="deleteStudent(student.Id)"> Delete</button>
+  }
+</div>

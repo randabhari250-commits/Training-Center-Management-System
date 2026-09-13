@@ -1,0 +1,51 @@
+@if(InstructorId === null){
+  <h1>Add Instructor</h1>
+}
+@else {
+  <h1>Update Instructor</h1>
+}
+
+<form [formGroup]="InstructorForm" (ngSubmit)="submitInstructor()">
+
+<div>
+<label> Name </label>
+<input type="text" formControlName ="Name">
+   @if (InstructorForm.controls['Name'].touched && InstructorForm.controls['Name'].hasError('required')) {
+      <p>Name is required.</p>
+    }
+</div>
+<div>
+<label> Email</label>
+  <input type="email" formControlName="Email">
+    @if (InstructorForm.controls['Email'].touched && InstructorForm.controls['Email'].hasError('required')) {
+      <p>Email is required.</p>
+    }
+
+    @if (InstructorForm.controls['Email'].touched && InstructorForm.controls['Email'].hasError('email')) {
+      <p>Please enter a valid email.</p>
+    }
+</div>
+<div>
+<label> Specialization</label>
+  <input type="text" formControlName="Specialization">
+   @if (InstructorForm.controls['Specialization'].touched && InstructorForm.controls['Specialization'].hasError('required')) {
+      <p>Specialization is required.</p>
+    }
+</div>
+
+ @if(SuccessMessage()){
+    <p>{{ SuccessMessage() }}</p>
+  }
+
+  @if(errorMessage()){
+    <p>{{ errorMessage()}}</p>
+  }
+
+
+@if(InstructorId === null){
+  <button> Save Instructor</button>
+}
+@else {
+  <button>Update Instructor</button>
+}
+</form>

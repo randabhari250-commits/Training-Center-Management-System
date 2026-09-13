@@ -1,0 +1,24 @@
+## ===== .NET / ASP.NET Core (TrainingCenter.Api) =====
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+
+# Secrets - do NOT commit real connection strings / JWT keys
+TrainingCenter.Api/appsettings.json
+
+## ===== Angular / Node (training-center-client) =====
+**/node_modules/
+**/dist/
+**/.angular/
+npm-debug.log*
+*.log
+
+## ===== Editors =====
+.vscode/
+.idea/
+
+## ===== OS =====
+.DS_Store
+Thumbs.db

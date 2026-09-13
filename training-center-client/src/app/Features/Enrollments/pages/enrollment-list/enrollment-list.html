@@ -1,0 +1,37 @@
+<h1>Enrollment List</h1>
+
+<button (click)="addEnroll()">  Create Enrollment </button>
+
+<table>
+<thead>
+  <tr>
+      <th>Student</th>
+      <th>Course</th>
+      <th>Enrollment Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+  </tr>
+</thead>
+
+<tbody>
+
+    @for (enrollment of enrollList(); track enrollment.Id) {
+
+      <tr>
+        <td>{{ enrollment.StudentName }}</td>
+        <td>{{ enrollment.CourseTitle}}</td>
+        <td>{{ enrollment.EnrollmentDate }}</td>
+        <td>{{ enrollment.Status }}</td>
+        <td>
+
+          @if (enrollment.Status === 'Active') {
+            <button
+              (click)="cancelEnroll(enrollment.Id)">
+              Cancel
+            </button>
+          }
+        </td>
+      </tr>
+    }
+</tbody>
+</table>

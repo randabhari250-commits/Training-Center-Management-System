@@ -1,0 +1,33 @@
+<h1> Register </h1>
+ <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+  <div>
+    <label> Email</label>
+    <input type="email" formControlName="Email">
+    @if(registerForm.controls['Email'].touched && registerForm.controls['Email'].hasError('required')){
+      <p>Email is requruid</p>
+    }
+    @if(registerForm.controls['Email'].touched && registerForm.controls['Email'].hasError('email')){
+      <p> Please Enter A valid Email</p>
+    }
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" formControlName="password">
+    @if(registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')){
+      <p>Password is required</p>
+    }
+     @if(registerForm.controls['password'].touched && registerForm.controls['password'].hasError('minlength')){
+      <p>Password must be at least 6 characters</p>
+    }
+  </div>
+
+   @if(SuccessMessage()){
+    <p>{{ SuccessMessage() }}</p>
+  }
+
+  @if(errorMessage()){
+    <p>{{ errorMessage()}}</p>
+  }
+
+  <button type="submit">Register</button>
+ </form>

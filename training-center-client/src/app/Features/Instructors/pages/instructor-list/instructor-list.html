@@ -1,0 +1,34 @@
+<h1>Instructor List</h1>
+<button (click)="addInstructor()">  Add Instructor </button>
+<p>Loaded Instructor: {{Instructor().length}}</p>
+
+@if(errorMessage()){
+  <p><strong>{{errorMessage()}} </strong> </p>
+}
+
+<table>
+  <thead>
+    <tr>
+    <th>Id </th>
+    <th>Name Instructor</th>
+    <th>Email</th>
+    <th>Specialization</th>
+    <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (instructor of Instructor(); track instructor.id) {
+      <tr>
+        <td>{{instructor.id}}</td>
+        <td>{{instructor.Name}}</td>
+        <td>{{instructor.Email}}</td>
+        <td>{{instructor.Specialization}}</td>
+        <td>
+            <button (click)="viewInstructor(instructor.id)"> View</button>
+            <button (click)="editInstructor(instructor.id)"> Edit </button>
+            <button (click)="deleteInstructor(instructor.id)"> Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

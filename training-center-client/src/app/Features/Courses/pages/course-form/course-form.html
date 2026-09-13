@@ -1,0 +1,79 @@
+@if (courseId === null) {
+  <h1>Add course</h1>
+}
+@else {
+  <h1>Update Course</h1>
+}
+<form [formGroup]="courseForm" (ngSubmit)="submitCourse()">
+
+<div>
+  <label>Title :</label>
+  <input type="text" formControlName="Title">
+   @if (courseForm.controls['Title'].touched && courseForm.controls['Title'].hasError('required')) {
+      <p>Title is required.</p>
+    }
+</div>
+<div>
+  <label>Description :</label>
+  <textarea formControlName="Description"> </textarea>
+
+   @if (courseForm.controls['Description'].touched && courseForm.controls['Description'].hasError('required')) {
+      <p>Description is required.</p>
+    }
+</div>
+<div>
+  <label>Capacity : </label>
+  <input type="number" formControlName="Capacity">
+  @if(courseForm.controls['Capacity'].touched && courseForm.controls['Capacity'].hasError('required')){
+    <p>Capacity is required</p>
+  }
+  @if(courseForm.controls['Capacity'].touched && courseForm.controls['Capacity'].hasError('min')){
+    <p>Capacity must be greater than 0</p>
+  }
+  @if(courseForm.controls['Capacity'].touched && courseForm.controls['Capacity'].hasError('max')){
+    <p>Capacity must not be greater than 45</p>
+  }
+</div>
+<div>
+  <label>StartDate : </label>
+  <input type="date" formControlName="StartDate">
+   @if(courseForm.controls['StartDate'].touched && courseForm.controls['StartDate'].hasError('required')){
+    <p> StartDate is required </p>
+  }
+</div>
+<div>
+  <label>EndDate : </label>
+  <input type="date" formControlName="EndDate">
+  @if(courseForm.controls['EndDate'].touched && courseForm.controls['EndDate'].hasError('required')){
+    <p> EndDate is required </p>
+  }
+</div>
+<div>
+  <label>Instructor : </label>
+  <select formControlName="InstructorId">
+    <option [ngValue]="null">No Instructor</option>
+    @for (instructor of Instructor; track instructor.id) {
+      <option [ngValue]="instructor.id">{{ instructor.Name }}</option>
+    }
+  </select>
+
+</div>
+
+@if(SuccessMessage()){
+    <p>{{ SuccessMessage() }}</p>
+  }
+
+  @if(errorMessage()){
+    <p>{{ errorMessage()}}</p>
+  }
+
+
+@if (courseId === null) {
+  <button type="submit">Save Course</button>
+}
+@else {
+  <button type="submit"> Update Course</button>
+}
+
+
+</form>

@@ -1,0 +1,64 @@
+
+<h1>Course Details</h1>
+
+@if (course(); as currentCourse) {
+
+  <div class="details-card">
+
+    <h2>{{ currentCourse.Title }}</h2>
+    <p>
+      <strong>Description:</strong> {{ currentCourse.Description }}
+    </p>
+    <p>
+      <strong>Capacity:</strong> {{ currentCourse.Capacity }}
+    </p>
+    <p>
+      <strong>Start Date:</strong> {{ currentCourse.StartDate }}
+    </p>
+    <p>
+      <strong>End Date:</strong> {{ currentCourse.EndDate }}
+    </p>
+  </div>
+
+  <div class="details-card">
+
+    <h2>Instructor</h2>
+
+    @if (currentCourse.Instructor) {
+
+      <p>
+        <strong>Name:</strong>{{ currentCourse.Instructor.Name }}
+      </p>
+      <p>
+        <strong>Email:</strong> {{ currentCourse.Instructor.Email }}
+      </p>
+      <p>
+        <strong>Specialization:</strong> {{ currentCourse.Instructor.Specialization }}
+      </p>
+    }
+    @else {
+      <p>No Instructor assigned.</p>
+    }
+
+  </div>
+
+  <div class="details-card">
+    <h2>Registered Students</h2>
+    <p>
+      <strong>Count:</strong>{{currentCourse.RegisteredStudentCount}}
+    </p>
+    @if (registeredStudents().length > 0) {
+      <ul>
+        @for (student of registeredStudents(); track student) {
+          <li>{{student}}</li>
+        }
+      </ul>
+    }
+    @else {
+      <p> No students registered</p>
+    }
+  </div>
+}
+@else {
+  <p>Course not found.</p>
+}
